@@ -13,7 +13,7 @@
  #include "main.h"
  #include "voids.h"
  #include "tasks.h"
-
+ #include "options.h"
 /*
  * Runs the user operator control code. This function will be started in its own task with the
  * default priority and stack size whenever the robot is enabled via the Field Management System
@@ -34,7 +34,8 @@
 
 
 void operatorControl() {
-  lcdPrint(uart2,0,"Operator control");
+  lcdPrint(uart2,0,"Auton Test");
+  SimpleAutonomous();
 	while (1)
   {
 		int speed  = joystickGetAnalog(1, 3)+joystickGetAnalog(2, 3);

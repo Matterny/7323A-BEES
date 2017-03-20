@@ -1,5 +1,5 @@
-
 #include "main.h"
+#include "GlobalVars.h"
 
 /*
  * Runs pre-initialization code. This function will be started in kernel mode one time while the
@@ -11,15 +11,6 @@
  */
 
 
- int count = 0;//Which autonomous to do by default
- const unsigned int leftButton = 1;//Pre-Auton Variables
- const unsigned int centerButton = 2;
- const unsigned int rightButton = 4;
- char option_1[] = "Simple Auton";//Replaced all strings with char arrays
- char option_2[] = "Left Cube";
- char option_3[] = "Right Cube";
- char option_4[] = "Skills Auton";
- char Mode[] = "Usercontrol";
 
  void waitForPress()
  {
@@ -140,5 +131,4 @@ void initialize() {
 lcdInit(uart2);
 lcdClear(uart2);
 lcdPrint(uart2,0,"starting up");
-
 }

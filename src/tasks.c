@@ -1,15 +1,7 @@
 #include "main.h"    // includes API.h and other headers
-#include "tasks.h" // redundant, but ensures that the corresponding header file (voids.h) is included
-#include "voids.h" // redundant, but ensures that the corresponding header file (voids.h) is included
-
-int Bat1;
-int Bat2;
-int Bat3;
-int status = 1;
-int Max_Height = 825;		//The value of the maximum desired height of the lift - 0800
-int Min_Height = 3100;
-int LiftAngle  = 2;
-int Limit = 0;
+#include "tasks.h" // redundant, but ensures that the corresponding header file (tasks.h) is included
+#include "voids.h"
+#include "GlobalVars.h"
 
 void power()
 {
@@ -98,6 +90,16 @@ void LiftDown()
 	{
 		motorSet(topLift,127);
 		motorSet(bottomLift,-127);
+	}
+	Lift(0);
+}
+
+void LiftUp()
+{
+  while(Max_Height <= analogRead(LiftAngle))
+	{
+		motorSet(topLift,-127);
+		motorSet(bottomLift,127);
 	}
 	Lift(0);
 }

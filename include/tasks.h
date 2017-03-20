@@ -5,8 +5,9 @@
 void power();
 void ESTOP();
 void Lift(int used);
-void liftPOS(int value);
+void LiftPOS(int value);
 void LiftDown();
+void	LiftUp();
 extern int Max_Height;
 extern int Mix_Height;
 #endif // _CHASSIS_H_

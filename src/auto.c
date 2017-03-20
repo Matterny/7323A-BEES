@@ -11,6 +11,10 @@
  */
 
 #include "main.h"
+#include "GlobalVars.h"
+#include "voids.h"
+#include "tasks.h"
+#include "options.h"
 
 /*
  * Runs the user autonomous code. This function will be started in its own task with the default
@@ -27,46 +31,45 @@
  * so, the robot will await a switch to another mode or disable/enable cycle.
  */
 void autonomous() {
-  //startTask(power);
 	ESTOP();
 
 	//Switch Case that actually runs the user choice
 	switch(count){
 	case 0:
 		//If count = 0, run the code correspoinding with choice 1
-		lcdPrint(UART2, 0, option_1);
-		lcdPrint(UART2, 1, "is running!");
-		wait1Msec(200);                        // Robot waits for 2000 milliseconds
-		startTask(SimpleAutonomous);
-		wait1Msec(15000);
+		lcdPrint(uart2, 0, option_1);
+		lcdPrint(uart2, 1, "is running!");
+		delay(200);                        // Robot waits for 2000 milliseconds
+		SimpleAutonomous();
+		delay(15000);
 		break;
 	case 1:
 		//If count = 1, run the code correspoinding with choice 2
-		lcdPrint(UART2, 0, option_2);
-		lcdPrint(UART2, 1, "is running!");
-		wait1Msec(200);                        // Robot waits for 2000 milliseconds
-		startTask(reverseSimple);
-		wait1Msec(15000);
+		lcdPrint(uart2, 0, option_2);
+		lcdPrint(uart2, 1, "is running!");
+		delay(200);                        // Robot waits for 2000 milliseconds
+		reverseSimple();
+		delay(15000);
 		break;
 	case 2:
 		//If count = 2, run the code correspoinding with choice 3
-		lcdPrint(UART2, 0, option_3);
-		lcdPrint(UART2, 1, "is running!");
-		wait1Msec(200);                        // Robot waits for 2000 milliseconds
-		startTask(CubeAutonomous);
-		wait1Msec(15000);
+		lcdPrint(uart2, 0, option_3);
+		lcdPrint(uart2, 1, "is running!");
+		delay(200);                        // Robot waits for 2000 milliseconds
+		CubeAutonomous();
+		delay(15000);
 		break;
 	case 3:
 		//If count = 3, run the code correspoinding with choice 4
-		lcdPrint(UART2, 0, option_4);
-		lcdPrint(UART2, 1, "is running!");
-		wait1Msec(200);                        // Robot waits for 2000 milliseconds
-		startTask(SkillsAuton);
-		wait1Msec(15000);
+		lcdPrint(uart2, 0, option_4);
+		lcdPrint(uart2, 1, "is running!");
+		delay(200);                        // Robot waits for 2000 milliseconds
+		SkillsAuton();
+		delay(15000);
 		break;
 	default:
-		lcdPrint(UART2, 0, "Line ~487")
-		lcdPrint(UART2, 1, "option_not_found");
+		lcdPrint(uart2, 0, "Line ~487");
+		lcdPrint(uart2, 1, "option_not_found");
 		break;
 	}
 }

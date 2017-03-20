@@ -1,31 +1,6 @@
 #include "main.h"    // includes API.h and other headers
 #include "voids.h" // redundant, but ensures that the corresponding header file (voids.h) is included
-
-
-
-
-int clawtime = 900;
-int clawsign = 1;							//Needs to be either 1 or -1
-int clawEnable = 1;						//Needs to be either 0 or 1
-int clawFuzz = 1;							//How far does the claw move in ESTOP_RATE ms
-int clawStartTime = 100;
-int ESTOP_RATE = 10;
-int driveSign = 1;
-//int Limit = 0;
-int holdSet;
-
-
-int backRight  = 1;
-int topLift    = 2;
-int frontRight = 3;//reverse
-int rightClaw  = 4;//reverse
-int midRight   = 5;//reverse
-int midLeft    = 6;
-int leftClaw   = 7;
-int frontLeft  = 8;
-int bottomLift = 9;     //reverse
-int backLeft   =10;
-
+#include "GlobalVars.h"
 
 
 void drive(int straight, int strafe, int turning) //Moves the robot a disired amount
