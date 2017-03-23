@@ -35,12 +35,14 @@
 
 void operatorControl() {
   lcdPrint(uart2,0,"Auton Test");
-  SimpleAutonomous();
+  //SimpleAutonomous();
+  delay(2000);//please remove this before competion
+  //SimpleAutonomous();
 	while (1)
   {
 		int speed  = joystickGetAnalog(1, 3)+joystickGetAnalog(2, 3);
     int strafe = 0;
-		int turn   = joystickGetAnalog(1, 4)+joystickGetAnalog(2, 4);
+		int turn   = joystickGetAnalog(1, 1)+joystickGetAnalog(2, 1);
 		drive(speed, strafe, turn); //Allows the user to control the movement of the robot
 		bool open  = (joystickGetDigital(1,8,JOY_RIGHT))||(joystickGetDigital(2,8,JOY_RIGHT))||(joystickGetDigital(1,5,JOY_UP))||(joystickGetDigital(2,5,JOY_UP));
 		bool close = (joystickGetDigital(1,8,JOY_DOWN))||(joystickGetDigital(2,8,JOY_DOWN))||(joystickGetDigital(1,5,JOY_DOWN))||(joystickGetDigital(2,5,JOY_UP));

@@ -8,6 +8,7 @@ void openClaw();
 void userclaw(bool open, bool close, int hold);
 void stopAllMotors();
 void wait1Msec(int duration);
+void 	stopClaw();
 extern int backRight;
 extern int topLift;
 extern int frontRight;//reverse

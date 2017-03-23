@@ -1,7 +1,8 @@
 #include "main.h"
 #include "GlobalVars.h"
+#define GYRO_PORT 3
 
-int count = 0;                    //Which autonomous to do by default
+int count =0;                    //Which autonomous to do by default
 const unsigned int leftButton = 1;//Pre-Auton Variables
 const unsigned int centerButton = 2;
 const unsigned int rightButton = 4;
@@ -42,3 +43,6 @@ int Max_Height = 825;		//The value of the maximum desired height of the lift - 0
 int Min_Height = 3100;
 int LiftAngle  = 2;
 int Limit = 0;
+
+Gyro lgyro;
+Gyro rgyro;

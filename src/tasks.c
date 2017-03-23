@@ -9,6 +9,9 @@ void power()
     lcdPrint(uart2,2,"%1.1f   %1.1f   %1.1f", (double)powerLevelMain()/1000, (double)powerLevelBackup()/1000, (double)analogRead(status)/280);
 }
 
+
+
+
 void ESTOP(){
 
     int LiftAngle  = 2;
@@ -32,7 +35,7 @@ void ESTOP(){
 			else
 			{
         Limit = 0;
-				lcdPrint(uart2, 1, "Lift is safe");
+				lcdPrint(uart2, 1, "%1.1f   %1.1f", (double)gyroGet(lgyro), (double)gyroGet(rgyro));
 				power();
 				lcdSetBacklight(uart2, false);
 			}

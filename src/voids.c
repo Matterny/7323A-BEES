@@ -26,25 +26,27 @@ void drive(int straight, int strafe, int turning) //Moves the robot a disired am
 	motorSet(midRight,-(Y1 - X2));
 	motorSet(frontLeft,Y1 + X2);
 	motorSet(backLeft, -(Y1 + X2 - X1));
-	motorSet(midLeft,Y1 + X2);
+	motorSet(midLeft,-(Y1 + X2));
 }
 
 void closeClaw() //Starts closing the claw
 {
 	motorSet(leftClaw, -100);
-	motorSet(rightClaw,-100);
+	motorSet(rightClaw,100);
+}
+
+void stopClaw() //Starts closing the claw
+{
+	userclaw(0,0,0);
 }
 
 void openClaw() //Starts opening the claw
 {
-	motorSet(leftClaw, 100);
+	motorSet(leftClaw, -100);
 	motorSet(rightClaw, 100);
 }
-void stopClaw() //Stops the claw from moving
-{
-	motorStop(leftClaw);
-	motorStop(rightClaw);
-}
+
+
 
   void userclaw(bool open, bool close, int hold)
 {		if (open){ //Starts closing the claw when the user presses 8D

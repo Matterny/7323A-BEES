@@ -1,6 +1,16 @@
 #include "main.h"
 #include "GlobalVars.h"
+void waitForPress()
+{
+ while(lcdReadButtons(uart2) == 0){}
+ delay(5);
+}
 
+void waitForRelease()
+{
+ while(lcdReadButtons(uart2) != 0){}
+ delay(5);
+}
 /*
  * Runs pre-initialization code. This function will be started in kernel mode one time while the
  * VEX Cortex is starting up. As the scheduler is still paused, most API functions will fail.
@@ -12,17 +22,7 @@
 
 
 
- void waitForPress()
- {
- 	while(lcdReadButtons(uart2) == 0){}
- 	delay(5);
- }
 
- void waitForRelease()
- {
- 	while(lcdReadButtons(uart2) != 0){}
- 	delay(5);
- }
 
 
 
@@ -36,8 +36,8 @@ void initializeIO()
 		switch(count){
 		case 0:
 			//Display first choice
-			lcdPrint(uart2, 0, option_1);
-			lcdPrint(uart2, 1, "<         Enter        >");
+			lcdPrint(uart2, 1, option_1);
+			lcdPrint(uart2, 2, "<         Enter        >");
 			waitForPress();
 			//Increment or decrement "count" based on button press
 			if(lcdReadButtons(uart2) == leftButton)
@@ -53,8 +53,8 @@ void initializeIO()
 			break;
 		case 1:
 			//Display second choice
-			lcdPrint(uart2, 0, option_2);
-			lcdPrint(uart2, 1, "<         Enter        >");
+			lcdPrint(uart2, 1, option_2);
+			lcdPrint(uart2, 2, "<         Enter        >");
 			waitForPress();
 			//Increment or decrement "count" based on button press
 			if(lcdReadButtons(uart2) == leftButton)
@@ -70,8 +70,8 @@ void initializeIO()
 			break;
 		case 2:
 			//Display third choice
-			lcdPrint(uart2, 0, option_3);
-			lcdPrint(uart2, 1, "<         Enter        >");
+			lcdPrint(uart2, 1, option_3);
+			lcdPrint(uart2, 2, "<         Enter        >");
 			waitForPress();
 			//Increment or decrement "count" based on button press
 			if(lcdReadButtons(uart2) == leftButton)
@@ -87,8 +87,8 @@ void initializeIO()
 			break;
 		case 3:
 			//Display fourth choice
-			lcdPrint(uart2, 0, option_4);
-			lcdPrint(uart2, 1, "<         Enter        >");
+			lcdPrint(uart2, 1, option_4);
+			lcdPrint(uart2, 2, "<         Enter        >");
 			waitForPress();
 			//Increment or decrement "count" based on button press
 			if(lcdReadButtons(uart2) == leftButton)
@@ -108,8 +108,8 @@ void initializeIO()
 		}
 	}
 	while(!isEnabled())
-	{	lcdPrint(uart2, 0, "Option"  );
-		lcdPrint(uart2, 1, "Selected");
+	{	lcdPrint(uart2, 1, "Option"  );
+		lcdPrint(uart2, 2, "Selected");
 		delay(100);
 	}
 }
@@ -128,6 +128,8 @@ void initializeIO()
  * can be implemented in this task if desired.
  */
 void initialize() {
+lgyro = gyroInit(3,0);
+rgyro = gyroInit(4,0);
 lcdInit(uart2);
 lcdClear(uart2);
 lcdPrint(uart2,0,"starting up");

@@ -1,11 +1,11 @@
 #ifndef _GlobalVars_H_
 #define _GlobalVars_H_
 
-int count;//Which autonomous to do by default
+extern int count;//Which autonomous to do by default
 extern const unsigned int leftButton;//Pre-Auton Variables
 extern const unsigned int centerButton;
 extern const unsigned int rightButton;
-extern char option_1[];//Replaced all strings with char arrays
+extern char option_1[];
 extern char option_2[];
 extern char option_3[];
 extern char option_4[];
@@ -18,7 +18,7 @@ extern int clawFuzz;							//How far does the claw move in ESTOP_RATE ms
 extern int clawStartTime;
 extern int ESTOP_RATE;
 extern int driveSign;
-int holdSet;
+extern int holdSet;
 
 
 extern int backRight;
@@ -41,5 +41,7 @@ extern int Min_Height;
 extern int LiftAngle;
 extern int Limit;
 
+extern Gyro lgyro;
+extern Gyro rgyro;
 
 #endif // _CHASSIS_H_
