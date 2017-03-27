@@ -2,7 +2,7 @@
 #include "tasks.h" // redundant, but ensures that the corresponding header file (tasks.h) is included
 #include "voids.h"
 #include "GlobalVars.h"
-
+#include "gyros.h"
 void power()
 {
     lcdSetBacklight(uart2, true);
@@ -35,7 +35,7 @@ void ESTOP(){
 			else
 			{
         Limit = 0;
-				lcdPrint(uart2, 1, "%1.1f   %1.1f", (double)gyroGet(lgyro), (double)gyroGet(rgyro));
+				lcdPrint(uart2, 1, "Safe D:%1.0d", analogRead(LiftAngle));
 				power();
 				lcdSetBacklight(uart2, false);
 			}
