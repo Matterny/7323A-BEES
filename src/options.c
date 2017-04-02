@@ -48,16 +48,15 @@ void reverseSimple()
 
 
 void CubeAutonomous()
-{openClaw();
-	/*
+{
 	openClaw();
-	delayStop(750);
+	delayStop(750);//claw open, origin, forward
+	forward(900);
+	angleSet(90);//claw open, (0,900), in
 	forward(500);
-	angleSet(90);
-	closeClaw();
+	closeClaw();//claw closed, (500,900), in
 	delayStop(500);
-*/
-delay((500));
+  delay(500);
 }
 
 void autonTest(int run)
