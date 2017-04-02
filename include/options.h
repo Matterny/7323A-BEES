@@ -5,5 +5,5 @@ void SkillsAuton();
 void SimpleAutonomous();
 void reverseSimple();
 void CubeAutonomous();
-
+void autonTest(int run);
 #endif // _options_H_

@@ -34,10 +34,6 @@
 
 
 void operatorControl() {
-  lcdPrint(uart2,0,"Auton Test");
-  //SimpleAutonomous();
-  delay(2000);//please remove this before competion
-  //SimpleAutonomous();
 	while (1)
   {
 		int speed  = joystickGetAnalog(1, 3)+joystickGetAnalog(2, 3);
@@ -49,6 +45,7 @@ void operatorControl() {
 		int  hold  = (joystickGetDigital(1,8,JOY_LEFT))||(joystickGetDigital(2,8,JOY_LEFT));
 		userclaw(open, close, hold); //Allows the user to control the claw
     Lift(joystickGetDigital(1,6,JOY_UP)-joystickGetDigital(1,6,JOY_DOWN)+joystickGetDigital(2,6,JOY_UP)-joystickGetDigital(2,6,JOY_DOWN)); //Allows the user to control the lift
-		delay(20);
-	}
+		delay(20);//Everything after this is for temporary testing purposes.
+    autonTest(joystickGetDigital(1,8,JOY_UP));
+  }
 }

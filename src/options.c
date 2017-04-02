@@ -1,100 +1,69 @@
 #include "main.h"
 #include "voids.h"
 #include "tasks.h"
-#include "autoncmds.h"
 #include "options.h"
-
+#include "gyros.h"
 void SkillsAuton()
 {}
+void delayStop(int duration)//Stops all motors after the specified duration.
+{	delay(duration);
+	stopAllMotors();}
 
 
-
-void SimpleAutonomous()
+void SimpleAutonomous()//Is old and reliable, few points
 {
 	closeClaw();
 	delay(1500);
-	stopClaw();
+	stopAllMotors();
 	LiftUp();
 	drive(127,0,0);  //Moves the robot forward
-	delay(2500);
-	stopAllMotors();
+	delayStop(2500);
 	openClaw();
-	delay(700);
-	stopClaw();
+	delayStop(700);
 	delay(10);
 	closeClaw();
 	delay(700);
 	userclaw(0,0,1);
 	LiftUp();
 	drive(-127,0,0);
-	delay(1000);
-	stopAllMotors();
+	delayStop(1000);
 	LiftPOS(1550);
 	openClaw();
-	delay(700);
-	stopClaw();
-	stopAllMotors();
+	delayStop(700);
 	drive(127,0,0);
 	delay(1000);
 	drive(-127,0,0);
-	delay(1000);
-	stopAllMotors();
+	delayStop(1000);
 	LiftDown();
-	delay(600);
-	stopAllMotors();
+	delayStop(600);
 	drive(127,0,0);
-	delay(1500);
-	stopAllMotors();
+	delayStop(1500);
 	drive(-127,0,0);
-	delay(800);
-	stopAllMotors();
+	delayStop(800);
 }
 
 void reverseSimple()
 {
-	drive(127,0,0);
-	delay(1000);
-	stopAllMotors();
-	closeClaw();
-	delay(clawtime*2);
-	userclaw(0,0,1);
-	stopAllMotors();
-	userclaw(0,0,1);
-	LiftUp();
-	drive(0,0,-127);
-	delay(450);
-	drive(127,0,0);
-	delay(1500);
-	drive(0,0,0);
-	userclaw(1,0,0);
-	delay(20);
-	stopClaw();
-	openClaw();
-	delay(500);
-	stopClaw();
 }
 
 
 void CubeAutonomous()
-{
-	drive(127,0,0);
-	delay(1000);
-	stopAllMotors();
-	closeClaw();
-	delay(clawtime*2);
-	userclaw(0,0,1);
-	stopAllMotors();
-	userclaw(0,0,1);
-	LiftUp();
-	drive(0,0,127);
-	delay(450);
-	drive(127,0,0);
-	delay(1500);
-	drive(0,0,0);
-	userclaw(1,0,0);
-	delay(20);
-	stopClaw();
+{openClaw();
+	/*
 	openClaw();
-	delay(500);
-	stopClaw();
+	delayStop(750);
+	forward(500);
+	angleSet(90);
+	closeClaw();
+	delayStop(500);
+*/
+delay((500));
+}
+
+void autonTest(int run)
+{if(run) CubeAutonomous();
+}
+
+void wallAuton()
+{
 }

@@ -39,8 +39,8 @@ int Bat1;
 int Bat2;
 int Bat3;
 int status = 1;
-int Max_Height = 15;		//The value of the maximum desired height of the lift - 0800
-int Min_Height = 19900;
+int Max_Height = 1200;		//The value of the maximum desired height of the lift - 0800
+int Min_Height = 3400;
 int LiftAngle  = 2;
 int Limit = 0;
 

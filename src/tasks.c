@@ -3,19 +3,16 @@
 #include "voids.h"
 #include "GlobalVars.h"
 #include "gyros.h"
+
 void power()
 {
     lcdSetBacklight(uart2, true);
     lcdPrint(uart2,2,"%1.1f   %1.1f   %1.1f", (double)powerLevelMain()/1000, (double)powerLevelBackup()/1000, (double)analogRead(status)/280);
 }
 
-
-
-
 void ESTOP(){
 
     int LiftAngle  = 2;
-		//int pot = analogRead(LiftAngle);
 		if (joystickGetDigital(1,7,JOY_RIGHT)+joystickGetDigital(2,7,JOY_RIGHT) == 0)
     {
 			if (Min_Height <= analogRead(LiftAngle))
