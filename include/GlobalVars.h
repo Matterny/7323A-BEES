@@ -40,6 +40,8 @@ extern int Max_Height;		//The value of the maximum desired height of the lift - 
 extern int Min_Height;
 extern int LiftAngle;
 extern int Limit;
+extern int side;//Either 0 or 12 depending on what side of the field the robot is on.
+extern Ultrasonic sonar;
 
 extern Gyro lgyro;
 extern Gyro rgyro;

@@ -1,5 +1,7 @@
 #include "main.h"
 #include "GlobalVars.h"
+
+
 void waitForPress()
 {
  while(lcdReadButtons(uart2) == 0){}
@@ -11,6 +13,14 @@ void waitForRelease()
  while(lcdReadButtons(uart2) != 0){}
  delay(5);
 }
+
+void select()
+{
+  if(ultrasonicGet(sonar)>30)
+  {side = 1;}
+  else{side=-1;}
+}
+
 /*
  * Runs pre-initialization code. This function will be started in kernel mode one time while the
  * VEX Cortex is starting up. As the scheduler is still paused, most API functions will fail.
@@ -19,15 +29,8 @@ void waitForRelease()
  * states (digitalWrite()) of limit switches, push buttons, and solenoids. It can also safely
  * configure a UART port (usartOpen()) but cannot set up an LCD (lcdInit()).
  */
-
-
-
-
-
-
-
 void initializeIO()
-{
+{watchdogInit();
 	//------------- Beginning of User Interface Code ---------------
 	//Loop while center button is not pressed
 	while((lcdReadButtons(uart2) != centerButton)-(isEnabled()))
@@ -133,4 +136,8 @@ rgyro = gyroInit(4,0);
 lcdInit(uart2);
 lcdClear(uart2);
 lcdPrint(uart2,0,"starting up");
+sonar = ultrasonicInit(1/*orange Wire*/, 2/*yellow_port_number*/);
+select();
+ultrasonicShutdown(sonar);
+side = side;//change this to change the final value of side.
 }

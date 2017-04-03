@@ -3,6 +3,7 @@
 #include "tasks.h"
 #include "options.h"
 #include "gyros.h"
+#include "GlobalVars.h"
 void SkillsAuton()
 {}
 void delayStop(int duration)//Stops all motors after the specified duration.
@@ -52,15 +53,18 @@ void CubeAutonomous()
 	openClaw();
 	delayStop(750);//claw open, origin, forward
 	forward(900);
-	angleSet(90);//claw open, (0,900), in
+	angleSet(90*side);//claw open, (0,900), in
 	forward(500);
-	closeClaw();//claw closed, (500,900), in
+	closeClaw();//claw closed, (500,900), in, should be holding onto the cube in the middle of the field
 	delayStop(500);
-  delay(500);
+	angleSet(0);
+	forward(500);//Cube should be over the fence in the middle of the field.
+	openClaw();
+	delayStop(500);
 }
 
 void autonTest(int run)
-{if(run) CubeAutonomous();
+{if(run) CubeAutonomous();//if run is 1 run the following autonomous.
 }
 
 void wallAuton()

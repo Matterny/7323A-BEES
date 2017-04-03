@@ -43,6 +43,8 @@ int Max_Height = 1200;		//The value of the maximum desired height of the lift - 
 int Min_Height = 3400;
 int LiftAngle  = 2;
 int Limit = 0;
+int side;
+Ultrasonic sonar;
 
 Gyro lgyro;
 Gyro rgyro;
